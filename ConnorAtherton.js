@@ -8,9 +8,11 @@ Router.configure({
   yieldTemplates: {
     header: {to: 'header'}
   },
+  template: 'pageLoggedIn',
   before: function() {
       var user = Meteor.user();
       if (! user) {
+          this.render('header', {to: 'header'});
           this.render('pageNotLoggedIn');
           return this.stop();
       }
@@ -18,43 +20,50 @@ Router.configure({
 });
  
 Router.map(function () {
- 
+
   this.route('home', {
     path: '/',
-    template: 'pageLoggedIn',
     yieldTemplates: {
       header: {to: 'header'},
       sidePanel: {to: 'sidePanel'},
       mainPanel: {to: 'mainPanel'}
     }
-    // before: function () {
-    //   if (Meteor.user()) {
-    //     this.redirect('showDashboard');
-    //     this.stop();
-    //   }
-    // }
   });
  
   this.route('showDashboard', {
     path: '/dashboard',
-    // before: function () {
-    //   if (!Meteor.user()) {
-    //     this.redirect('home');
-    //     this.stop();
-    //   }
-    // }
+    yieldTemplates: {
+      header: {to: 'header'},
+      mainPanel: {to: 'mainPanel'},
+      showDashboard: {to: 'main'}
+    }
   });
  
   this.route('showPies', {
-    path: '/pies'
+    path: '/pies',
+    yieldTemplates: {
+      header: {to: 'header'},
+      mainPanel: {to: 'mainPanel'},
+      showPies: {to: 'main'}
+    }
   });
  
   this.route('showForce', {
-    path: '/force'
+    path: '/force',
+    yieldTemplates: {
+      header: {to: 'header'},
+      mainPanel: {to: 'mainPanel'},
+      showForce: {to: 'main'}
+    }
   });
  
   this.route('showScatter', {
-    path: '/scatter'
+    path: '/scatter',
+    yieldTemplates: {
+      header: {to: 'header'},
+      mainPanel: {to: 'mainPanel'},
+      showScatter: {to: 'main'}
+    }
   });
  
 });
