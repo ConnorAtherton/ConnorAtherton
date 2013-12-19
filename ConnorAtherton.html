@@ -1,0 +1,81 @@
+<head>
+  <title>Meteor Application</title>
+</head> 
+<body>
+</body>
+ 
+<template name="layout">
+  {{yield 'header'}}
+ 
+  <section id="page" class="cf">
+  	{{yield}}
+  </section>
+ 
+</template>
+ 
+<template name="pageNotLoggedIn">
+  <p>Your not logged in mister!</p>
+</template>
+ 
+<template name="pageLoggedIn">
+	{{yield 'sidePanel'}}
+  {{yield 'mainPanel'}}
+</template>
+ 
+ 
+<template name="sidePanel">
+	<div id="sidePanel">
+	  <div id="logo">
+	    <p>Logo goes here</p>
+	  </div>
+	  
+	  <ul class="actions">
+	    <li class="action">
+	      <a class="action" id="show-dashboard" href="{{pathFor 'showDashboard'}}">modify data</a>
+	    </li>
+	    <li class="action">
+	      <a class="action" id="view-pies" href="{{pathFor 'showPies'}}">view pie charts</a>
+	    </li>
+	    <li class="action">
+	      <a class="action" id="view-force" href="{{pathFor 'showForce'}}">view force graph</a>
+	    </li>
+	    <li class="action">
+	      <a class="action" id="view-scatter" href="{{pathFor 'showScatter'}}">view scatter</a>
+	    </li>
+	  </ul>
+	</div>
+</template>
+ 
+<template name="mainPanel">
+    <div id="mainPanel">
+    	<p>Main Panel</p>
+    </div>
+</template>
+ 
+<template name="header">
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="pull-right">
+          {{loginButtons}}
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+ 
+<template name="showDashboard">
+  <p>show dashboard</p>
+</template>
+ 
+<template name="showPies">
+  <p>show pies</p>
+</template>
+ 
+<template name="showForce">
+  <p>show force</p>
+</template>
+ 
+<template name="showScatter">
+  <p>show scatter</p>
+</template>
